@@ -1,9 +1,11 @@
 import express from "express";
 import cors from "cors";
 import fetch from "node-fetch";
+import http from "http";
 
 const app = express();
 const port = process.env.PORT || 8000;
+const server = http.createServer(app);
 
 app.use(cors());
 // app.use(bodyParser.urlencoded({ extended: true }));
@@ -51,6 +53,6 @@ app.use("*", (req, res) => {
   res.status(404).json({ error: "not found" });
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log("Server is running on port", port);
 });

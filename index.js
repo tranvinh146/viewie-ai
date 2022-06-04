@@ -6,7 +6,6 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/summarization", async (req, res) => {
   const response = await fetch(

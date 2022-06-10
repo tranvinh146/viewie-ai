@@ -10,13 +10,13 @@ const port = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 
-app.post("/summarization", async (req, res) => {
+app.get("/summarization", async (req, res) => {
   const response = await fetch(
     "https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6",
     {
       headers: { Authorization: `Bearer ${process.env.API_TOKEN}` },
       method: "POST",
-      body: JSON.stringify(req.body),
+      body: JSON.stringify(req.query),
     }
   );
   const result = await response.json();
